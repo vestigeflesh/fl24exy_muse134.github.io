@@ -333,11 +333,11 @@
       </div>
 
       <p class="body-text">
-        (NUDE version) based on combonation of those three references.
+        (NUDE version) A combination of all the three below references.
       </p>
 
       <!-- mixed layout: big left + tall right -->
-      <div class="media-grid two">
+      <div class="media-grid mixed">
         <div class="media-item square">
           <img src="images/Bendy044.jpg" alt=""
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -345,7 +345,7 @@
         </div>
       
          <div class="media-item square">
-          <img src="images/ref1.png" alt=""
+          <img src="images/ref4.gif" alt=""
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="placeholder" style="display:none;">img 9</div>
         </div>
@@ -362,51 +362,42 @@
         <li>Whatever music/talking you'd like.</li>
         <li>Id like you to smoke while you're playing with yourself. Think of it as if you're some kind mob boss or something :D. </li>
         <li>Open to any extra suggestions you wanna add to this idea.</li>
+        <li>The one where you're wearing the pink one. I like how half your ass hangs off the couch, I'd like to incorporate that somehow if possible. </li>
       </ul>
     </section>
 
         <!-- ══════════════════════════════════════
          SECTION 3
     ═══════════════════════════════════════ -->
-    <section class="section">
+   <section class="section">
       <div class="section-header">
         <span class="section-num">03</span>
         <h2 class="section-title">Idea Three</h2>
       </div>
-
-      <p class="body-text">
-        (NUDE version) based on combonation of those three references.
-      </p>
-
-      <!-- mixed layout: big left + tall right -->
-      <div class="media-grid two">
-        <div class="media-item square">
-          <img src="images/Bendy044.jpg" alt=""
+ 
+      <p class="body-text">(NUDE version) based on that gif. everything you're doing in that.</p>
+ 
+      <div class="media-grid one">
+        <div class="media-item tall">
+          <img src="images/ref3.gif" alt=""
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="placeholder" style="display:none;">img 8</div>
-        </div>
-      
-         <div class="media-item square">
-          <img src="images/ref1.png" alt=""
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="placeholder" style="display:none;">img 9</div>
+          <div class="placeholder" style="display:none;">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            placeholder
+          </div>
         </div>
       </div>
-
-           <div class="media-item square">
-          <img src="images/ref2.png" alt=""
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="placeholder" style="display:none;">img 9</div>
-        </div>
-      </div>
-
       <ul class="notes">
-        <li>Whatever music/talking you'd like.</li>
-        <li>Id like you to smoke while you're playing with yourself. Think of it as if you're some kind mob boss or something :D. </li>
+        <li>Whatever music/talking you'd like or you dont want to.</li>
         <li>Open to any extra suggestions you wanna add to this idea.</li>
+        <li>You can add a fun unique spin to my old notes. </li>
+        <li>Be as dirty and perverted as you feel comfortable.  </li>
       </ul>
     </section>
-
+  
 
     <!-- ── FOOTER ── -->
     <footer>
@@ -415,5 +406,37 @@
     </footer>
 
   </div>
+
+    <script>
+    // Auto-detect image orientation and apply the matching aspect-ratio class.
+    // Skips items that already have an explicit orientation class (tall/wide/square)
+    // so manual overrides still win.
+    document.querySelectorAll('.media-item img').forEach(function (img) {
+      var item = img.closest('.media-item');
+      if (!item) return;
+      if (item.classList.contains('tall') ||
+          item.classList.contains('wide') ||
+          item.classList.contains('square')) return;
+ 
+      function applyOrientation() {
+        if (!img.naturalWidth || !img.naturalHeight) return; // failed/placeholder
+        var ratio = img.naturalWidth / img.naturalHeight;
+        if (ratio > 1.15) {
+          item.classList.add('wide');
+        } else if (ratio < 0.87) {
+          item.classList.add('tall');
+        } else {
+          item.classList.add('square');
+        }
+      }
+ 
+      if (img.complete && img.naturalWidth) {
+        applyOrientation();
+      } else {
+        img.addEventListener('load', applyOrientation);
+      }
+    });
+  </script>
+
 </body>
 </html>
